@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!--
+
+-->
+<scxml xmlns="http://www.w3.org/2005/07/scxml"
+       version="1.0"
+       datamodel="jexl"
+       initial="filling">
+
+    <datamodel>
+        <data id="applicant" expr=""></data>
+        <data id="reason" expr=""></data>
+        <data id="from" expr=""></data>
+        <data id="to" expr=""></data>
+        <data id="departmentApprove" expr="false"></data>
+        <data id="personnelApprove" expr="false"></data>
+    </datamodel>
+
+    <state id="filling">
+        <onentry>
+
+        </onentry>
+        <transition event="filled" target="approving"></transition>
+    </state>
+
+    <state id="approving">
+        <onentry>
+            <script></script>
+        </onentry>
+
+        <initial>
+            <transition target="departmentApproving"></transition>
+        </initial>
+
+        <state id="departmentApproving">
+            <onentry></onentry>
+            <transition event="departmentApprove" target="personnelApproving"></transition>
+        </state>
+
+        <state id="personnelApproving">
+            <onentry></onentry>
+            <transition event="approve" target="approveEnd"></transition>
+        </state>
+
+        <final id="approveEnd"></final>
+
+        <transition event="done.state.approving" target="approved" />
+        <transition event="reject" target="rejected"></transition>
+    </state>
+
+    <state id="approved">
+        <onentry></onentry>
+
+        <transition target="end" ></transition>
+    </state>
+
+    <state id="rejected">
+        <onentry></onentry>
+
+        <transition event="goFilling" target="filling"></transition>
+        <transition event="goEnd" target="end"></transition>
+    </state>
+
+    <final id="end">
+        <onentry></onentry>
+    </final>
+
+</scxml>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="commons-scxml2-2.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/commons-scxml2-2.0-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../commons-scxml/src/main/java" />
+    </SOURCES>
+  </library>
+</component>

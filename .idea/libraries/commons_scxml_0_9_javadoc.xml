@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="commons-scxml-0.9-javadoc">
+    <CLASSES />
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/lib/commons-scxml-0.9-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

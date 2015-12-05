@@ -1,0 +1,22 @@
+<scxml xmlns="http://www.w3.org/2005/07/scxml"
+       version="1.0" inital="hello">
+    <state id="hello">
+        <onentry>
+            <log lable="'zhengq'" expr=" 'entry  state end ' " />
+        </onentry>
+        <onexit>
+            <log expr=" 'exit  state end ' " />
+        </onexit>
+        <transition  target="end">
+            <log expr="'hello'"/>
+        </transition>
+    </state>
+    <final id="end" user="zq">
+        <onentry>
+            <log expr=" 'entry  final state end ' " />
+        </onentry>
+        <onexit>
+            <log expr=" 'exit  final state end ' " />
+        </onexit>
+    </final>
+</scxml>

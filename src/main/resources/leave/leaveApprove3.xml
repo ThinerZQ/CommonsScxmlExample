@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<!--
+
+-->
+<scxml xmlns="http://www.w3.org/2005/07/scxml"
+       version="1.0"
+       datamodel="jexl"
+       initial="filling">
+
+    <datamodel>
+        <data id="applicant" expr=""></data>
+        <data id="reason" expr=""></data>
+        <data id="from" expr=""></data>
+        <data id="to" expr=""></data>
+        <data id="departmentApprove" expr="false"></data>
+        <data id="personnelApprove" expr="false"></data>
+    </datamodel>
+
+    <state id="filling">
+        <onentry>
+
+        </onentry>
+        <transition event="fill.end" target="approving">
+            <assign location="applicant" expr="applicant"></assign>
+            <assign location="reason" expr="reason"></assign>
+            <assign location="from" expr="from"></assign>
+            <assign location="to" expr="to"></assign>
+        </transition>
+    </state>
+
+    <state id="approving">
+        <onentry>
+            <script>
+                在这里面指定人吗，怎么指定？插入到相应的人的工作列表
+            </script>
+        </onentry>
+
+
+
+        <transition event="department.approve" cond="personnelApprove eq true" target="approved" >
+            <assign location="departmentApprove" expr="true"></assign>
+        </transition>
+        <transition event="department.approve" cond="personnelApprove eq false">
+            <assign location="departmentApprove" expr="true"></assign>
+        </transition>
+
+        <transition event="personnel.approve" cond="departmentApprove eq true" target="approved">
+            <assign location="personnelApprove" expr="true"></assign>
+        </transition>
+        <transition event="personnel.approve" cond="departmentApprove eq false">
+            <assign location="personnelApprove" expr="true"></assign>
+        </transition>
+
+
+
+
+
+        <transition event="department.approve">
+            <assign location="departmentApprove" expr="true"></assign>
+            <script>
+                指定下一个任务是谁完成，插入到下一个人的工作列表
+            </script>
+        </transition>
+
+        <transition event="personnel.approve" target="approved">
+            <assign location="personnelApprove" expr="true"></assign>
+        </transition>
+
+        <transition event="reject" target="rejected"/>
+    </state>
+
+    <state id="approved">
+        <onentry>
+            <script>
+                MailSupport.sendEmail(application,approved)
+            </script>
+        </onentry>
+
+        <transition target="end" ></transition>
+    </state>
+
+    <state id="rejected">
+        <onentry>
+            <script>
+                MailSupport.sendEmail(application,rejected)
+            </script>
+        </onentry>
+
+        <transition event="goFilling" target="filling"></transition>
+        <transition event="goEnd" target="end"></transition>
+    </state>
+
+    <final id="end">
+        <onentry>
+            <script>
+                ArchiveSupport.archive()
+            </script>
+        </onentry>
+    </final>
+
+</scxml>
