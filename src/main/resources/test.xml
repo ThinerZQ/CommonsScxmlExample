@@ -20,9 +20,9 @@
             <script>
                 stopWatch.reset()
             </script>
-            <log expr="' entry reset'" />
+            <log expr="' entry reset'"/>
         </onentry>
-        <transition event="watch.start" target="running" />
+        <transition event="watch.start" target="running"/>
     </state>
 
     <state id="running">
@@ -31,7 +31,7 @@
                 stopWatch.go("hello")
             </script>
         </onentry>
-        <transition event="watch.stop" target="stopped" />
+        <transition event="watch.stop" target="stopped"/>
     </state>
 
     <state id="stopped">
@@ -40,10 +40,37 @@
                 stopWatch.stoped("stop")
             </script>
         </onentry>
-        <transition event="watch.start" target="running" >
+        <transition event="watch.start" target="running">
 
         </transition>
-        <transition event="watch.reset" target="reset" />
+        <transition event="watch.reset" target="reset"/>
     </state>
 
 </scxml>
+
+
+<scxml version="1.0" initial="filling">
+<state id="filling">
+    <onentry>
+        //分派任务
+    </onentry>
+    <transition event="filled" target="approving">
+        fillForm(filled._data.uername,filled_data,reason)
+    </transition>
+</state>
+<state id="managerApproving">
+    <onentry>
+        //分派任务
+    </onentry>
+    <transition event="managerApprove" target="end">
+        departmentApprove(true)
+    </transition>
+</state>
+<final id="end"/>
+</scxml>
+
+
+
+
+
+
