@@ -30,7 +30,8 @@
             <!--调用leaveEntity的填表函数，在这个函数里面，我们可以操作做数据持久化-->
             <!--个人觉得这种方式和领域驱动设计很像，欢迎和我交流-->
             <script>
-                leaveEntity.fillForm(applicant,reason,from,to)
+                leaveEntity.fillForm(applicant,reason,from,to);
+                leaveEntity.reject(false);
             </script>
 
         </transition>
@@ -88,7 +89,8 @@
     <state id="rejected">
         <onentry>
             <script>
-                leaveEntity.sendEmail()
+                leaveEntity.reject(true);
+                leaveEntity.sendEmail();
             </script>
         </onentry>
         <!--申请者选择继续修改申请信息的时候的转移，-->

@@ -15,6 +15,7 @@ public class LeaveEntity {
     private String to;
     private boolean departmentApprove;
     private boolean personnelApprove;
+    private boolean reject;
 
 
     /**
@@ -53,6 +54,10 @@ public class LeaveEntity {
         System.out.println("人事经理同意");
     }
 
+    public void reject(boolean b){
+        this.reject =b;
+        System.out.println("请假被拒绝");
+    }
     /**
      * 发送邮件信息
      */
@@ -69,5 +74,33 @@ public class LeaveEntity {
      */
     public void archive(){
         System.out.println("开始归档");
+    }
+
+    public String getAppliant() {
+        return appliant;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public String getFrom() {
+        return from;
+    }
+
+    public String getTo() {
+        return to;
+    }
+
+    public boolean isDepartmentApprove() {
+        return departmentApprove;
+    }
+
+    public boolean isPersonnelApprove() {
+        return personnelApprove;
+    }
+
+    public boolean isReject() {
+        return reject;
     }
 }

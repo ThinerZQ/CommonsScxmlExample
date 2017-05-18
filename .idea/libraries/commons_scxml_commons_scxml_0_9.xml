@@ -6,11 +6,17 @@
       <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.1.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/commons-digester-1.8.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/commons-beanutils-1.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-scxml-0.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-digester-1.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-beanutils-1.7.0.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/lib/commons-scxml-0.9-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-scxml-0.9-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/commons-scxml-0.9-sources.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/commons-scxml-0.9-sources.jar!/" />
     </SOURCES>
   </library>
